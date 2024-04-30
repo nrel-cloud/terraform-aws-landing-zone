@@ -1,1 +1,1 @@
-# terraform-aws-landingzone
+# terraform-aws-landing-zone

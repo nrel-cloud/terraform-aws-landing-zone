@@ -10,9 +10,6 @@ variable "environment01" {
 variable "location01" {
   type    = string
 }
-variable "profile" {
-  type    = string
-}
 variable "sharedsubnetscidrs" {
   type    = list(string)
 }

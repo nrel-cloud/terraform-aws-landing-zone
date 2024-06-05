@@ -1,7 +1,6 @@
 provider "aws" {
   alias = "hubaccount"
   region = var.location01  # Modify this to your preferred region
-  profile = var.profile
 
     assume_role {
     # The role ARN within Account B to AssumeRole into.
@@ -14,7 +13,6 @@ provider "aws" {
 provider "aws" {
   alias = "spokeaccount"
   region = var.location01 # Modify this to your preferred region
-  profile = var.profile
 
   assume_role {
     # The role ARN within Account B to AssumeRole into.

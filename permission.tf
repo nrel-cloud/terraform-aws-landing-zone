@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "NREL-ReaderAccessAxonius" {
-  provider    = aws.spokeaccount
+  provider    = aws.spoke_account_location01
   name        = "NREL-ReaderAccessAxonius"
   description = "Adapter Fetch Permissions per Axonius documentation"
   policy      = <<EOF
@@ -193,13 +193,13 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "roleattachment01" {
-    provider = aws.spokeaccount
+    provider = aws.spoke_account_location01
     policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"  # ARN for AdministratorAccess policy
     role      = aws_iam_role.role01.name
 }
 
 resource "aws_iam_role_policy_attachment" "roleattachment02" {
-    provider = aws.spokeaccount
-    policy_arn = "arn:aws:iam::${var.accountid}:policy/NREL-ReaderAccessAxonius"  # ARN for NREL-ReaderAccessAxonius policy
+    provider = aws.spoke_account_location01
+    policy_arn = "arn:aws:iam::${var.spoke_account_id}:policy/NREL-ReaderAccessAxonius"  # ARN for NREL-ReaderAccessAxonius policy
     role      = aws_iam_role.role02.name
 }

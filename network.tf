@@ -1,24 +1,17 @@
-data "aws_vpc" "vpc01" {
-  provider = aws.hubaccount
+/*data "aws_vpc" "vpc01" {
+  provider = aws.shared_account_location01
   filter {
     name   = "tag:Name"
-    values = ["*infra-001*"]  
+    values = ["*general*"]  
   }
 }
+*/
 
-data "aws_subnet" "sharedsubnets01" {
-  provider = aws.hubaccount
-  for_each = toset(var.sharedsubnetscidrs)
-  vpc_id   = data.aws_vpc.vpc01.id
-  cidr_block = each.key
-}
-
-resource "aws_ec2_tag" "spokesubnettags01" {
-  provider = aws.spokeaccount
-  for_each = data.aws_subnet.sharedsubnets01
-  resource_id = each.value["id"]
-  key = "Name"
-  value = each.value.tags["Name"]
-  depends_on = [ aws_ram_resource_association.ramshareassociation01]
+data "aws_subnet" "subnets_shared_location01" {
+  provider = aws.shared_account_location01
+  for_each = var.shared_subnets_names
+  filter {
+    name   = "tag:Name"
+    values = [each.value]
   }
-
+}

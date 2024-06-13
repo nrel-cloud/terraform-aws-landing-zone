@@ -1,5 +1,5 @@
 resource "aws_iam_role" "role01" {
- provider = aws.spokeaccount
+ provider = aws.spoke_account_location01
   name = "NREL-AnsibleAssumeRole"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -15,7 +15,7 @@ resource "aws_iam_role" "role01" {
   })
 }
 resource "aws_iam_role" "role02" {
- provider = aws.spokeaccount
+ provider = aws.spoke_account_location01
   name = "NREL-ReaderRoleAxonius"
   assume_role_policy = jsonencode({
     "Version": "2012-10-17",

@@ -1,15 +1,32 @@
-variable "accountid" {
-  type = string
-}
-variable "hubaccountid" {
-  type = string
-}
+
 variable "environment01" {
-  type    = string
+  type = string
 }
 variable "location01" {
   type    = string
+  default = "us-west-2"
 }
-variable "sharedsubnetscidrs" {
-  type    = list(string)
+variable "location02" {
+  type    = string
+  default = "us-west-1"
+}
+variable "location03" {
+  type    = string
+  default = "us-east-2"
+}
+variable "location04" {
+  type    = string
+  default = "us-east-1"
+}
+variable "shared_account_id" {
+  type = string
+}
+variable "shared_subnets_cidrs" {
+  type = set(string)
+}
+variable "shared_subnets_names" {
+  type = set(string)
+}
+variable "spoke_account_id" {
+  type = string
 }

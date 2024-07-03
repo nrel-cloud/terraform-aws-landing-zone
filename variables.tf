@@ -21,9 +21,6 @@ variable "location04" {
 variable "shared_account_id" {
   type = string
 }
-variable "shared_subnets_cidrs" {
-  type = set(string)
-}
 variable "shared_subnets_names" {
   type = set(string)
 }
